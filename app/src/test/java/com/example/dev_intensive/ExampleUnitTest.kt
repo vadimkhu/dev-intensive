@@ -1,6 +1,7 @@
 package com.example.dev_intensive
 
 import com.example.dev_intensive.models.User
+import com.example.dev_intensive.utils.Utils
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -25,6 +26,14 @@ class ExampleUnitTest {
     fun test_factory() {
         val user1 = User.makeUeser("John Ratt")
         val user2 = User.makeUeser("John Catt")
-        val user3 = User.makeUeser(" ")
+        println(user1)
+    }
+
+    @Test
+    fun test_parseFullName() {
+        println(Utils.parseFullName(null)) //null null
+        println(Utils.parseFullName("")) //null null
+        println(Utils.parseFullName(" ")) //null null
+        println(Utils.parseFullName("John")) //John null
     }
 }

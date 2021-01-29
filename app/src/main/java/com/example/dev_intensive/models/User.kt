@@ -1,8 +1,9 @@
 package com.example.dev_intensive.models
 
+import com.example.dev_intensive.utils.Utils
 import java.util.*
 
-class User(val id : String,
+data class User(val id : String,
            var firstName : String?,
            var lastName : String?,
            var avatar : String?,
@@ -23,13 +24,10 @@ class User(val id : String,
     }
 
     companion object Factory {
-        private var lastid: Int = -1
+        private var lastid: Int = 0
         fun makeUeser(fullName: String): User {
-            lastid++
-            val parts = fullName?.trim()?.split(" ")
-            val firstName = parts?.getOrNull(0)?.ifEmpty { null }
-            val lastName = parts?.getOrNull(1)?.ifEmpty { null }
-            return User(id = "$lastid", firstName = firstName, lastName = lastName)
+            val (firstName, lastName) = Utils.parseFullName(fullName)
+            return User("${lastid++}", firstName, lastName)
         }
     }
 }
