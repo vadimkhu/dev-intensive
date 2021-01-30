@@ -7,4 +7,12 @@ object Utils {
         val secondName = parts?.getOrNull(1)?.ifEmpty { null }
         return firstName to secondName
     }
+
+    fun toInitials(firstName: String?, lastName: String?) : String? {
+        val name = firstName.orEmpty().trim().getOrNull(0)?.toUpperCase()
+        val last = lastName.orEmpty().trim().getOrNull(0)?.toUpperCase()
+        val nameInit = name?.toString() ?: ""
+        val lastInit = last?.toString() ?: ""
+        return "$nameInit$lastInit".ifEmpty { null }
+    }
 }
