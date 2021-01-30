@@ -81,6 +81,16 @@ enum class TimeUnits(val value:Long){
     HOUR(60 * MINUTE.value),
     DAY(24 * HOUR.value);
 
+    /*
+    Реализуй метод plural для всех перечислений TimeUnits следующего вида
+    TimeUnits.SECOND.plural(value:Int) возвращающую значение в виде строки с праильно склоненной
+    единицей измерения
+Пример:
+TimeUnits.SECOND.plural(1) //1 секунду
+TimeUnits.MINUTE.plural(4) //4 минуты
+TimeUnits.HOUR.plural(19) //19 часов
+TimeUnits.DAY.plural(222) //222 дня
+     */
     fun plural(value: Int): String{
         return "$value ${getPluralForm(value, this)}"
     }
