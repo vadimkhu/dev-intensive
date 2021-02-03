@@ -1,4 +1,4 @@
-package com.example.dev_intensive.extensions
+package ru.skillbranch.devintensive.extensions
 
 /*
 Реализуй extension позволяющий очистить строку от html тегов и html escape последовательностей

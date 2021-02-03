@@ -1,6 +1,5 @@
-package com.example.dev_intensive.extensions
+package ru.skillbranch.devintensive.extensions
 
-import java.lang.IllegalStateException
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.abs
@@ -20,8 +19,8 @@ fun Date.add(value: Int, units: TimeUnits = TimeUnits.SECOND) : Date {
     time += when (units) {
         TimeUnits.SECOND -> value * SECOND
         TimeUnits.MINUTE -> value * MINUTE
-        TimeUnits.HOUR   -> value * HOUR
-        TimeUnits.DAY    -> value * DAY
+        TimeUnits.HOUR -> value * HOUR
+        TimeUnits.DAY -> value * DAY
     }
     return this
 }
@@ -32,13 +31,34 @@ fun Date.humanizeDiff(date: Date = Date()) : String {
 
     return when {
         diff <= TimeUnits.SECOND.value -> "только что"
-        diff <= TimeUnits.SECOND.value * 45 -> getTenseForm("несколько секунд", isPast)
-        diff <= TimeUnits.SECOND.value * 75 -> getTenseForm("минуту", isPast)
-        diff <= TimeUnits.MINUTE.value * 45 -> getTenseForm(TimeUnits.MINUTE.plural((diff / TimeUnits.MINUTE.value).toInt()), isPast)
-        diff <= TimeUnits.MINUTE.value * 75 -> getTenseForm("час", isPast)
-        diff <= TimeUnits.HOUR.value * 22 -> getTenseForm(TimeUnits.HOUR.plural((diff / TimeUnits.HOUR.value).toInt()), isPast)
-        diff <= TimeUnits.HOUR.value * 26 -> getTenseForm("день", isPast)
-        diff <= TimeUnits.DAY.value * 360 -> getTenseForm(TimeUnits.DAY.plural((diff / TimeUnits.DAY.value).toInt()), isPast)
+        diff <= TimeUnits.SECOND.value * 45 -> getTenseForm(
+            "несколько секунд",
+            isPast
+        )
+        diff <= TimeUnits.SECOND.value * 75 -> getTenseForm(
+            "минуту",
+            isPast
+        )
+        diff <= TimeUnits.MINUTE.value * 45 -> getTenseForm(
+            TimeUnits.MINUTE.plural((diff / TimeUnits.MINUTE.value).toInt()),
+            isPast
+        )
+        diff <= TimeUnits.MINUTE.value * 75 -> getTenseForm(
+            "час",
+            isPast
+        )
+        diff <= TimeUnits.HOUR.value * 22 -> getTenseForm(
+            TimeUnits.HOUR.plural((diff / TimeUnits.HOUR.value).toInt()),
+            isPast
+        )
+        diff <= TimeUnits.HOUR.value * 26 -> getTenseForm(
+            "день",
+            isPast
+        )
+        diff <= TimeUnits.DAY.value * 360 -> getTenseForm(
+            TimeUnits.DAY.plural((diff / TimeUnits.DAY.value).toInt()),
+            isPast
+        )
         else -> if(isPast) "более года назад" else "более чем через год"
     }
 }
