@@ -10,7 +10,9 @@ package ru.skillbranch.devintensive.extensions
 "<p>Образовательное       IT-сообщество Skill Branch</p>".stripHtml() //Образовательное IT-сообщество Skill Branch
  */
 fun String.stripHtml(): String {
-    return this.replace(Regex("(<[^<>]+>)|(&[^ а-я]{1,4}?;)"), "").replace(Regex("( {2,})"), " ")
+    val html = Regex("(<.*?>)|(&[^ а-я]{1,4}?;)")//Regex("(<[^<>]+>)|(&[^ а-я]{1,4}?;)")
+    val space = Regex("( {2,})")
+    return this.replace(html, "").replace(space, " ")
 }
 
 /*
